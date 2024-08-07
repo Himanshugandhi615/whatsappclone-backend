@@ -30,10 +30,9 @@ server.listen(port, () => {
 
 const io = new Server(server, {
     cors: {
-        origin: process.env.FRONTEND_ORIGIN,//frontend or backend dono alg alg port pr chl rhe hai security point of view se chrome hmari req ko block kr rha tha
+        origin: true // Allows access from any origin
     }
 });
-
 
 
 let users = [];
