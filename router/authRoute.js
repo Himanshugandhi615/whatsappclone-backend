@@ -5,11 +5,12 @@ const authMiddleware = require("../middleware/auth-middlware");
 const authvalidators = require("../validator/auth-validator");
 const validate = require("../middleware/validate-middleware");
 const multer = require('multer');
+const path = require('path')
 
 // Storage engine setup
 const profileStorage = multer.diskStorage({
     destination: function (req, file, cb) {
-        return cb(null, '/profileuploads')
+        return cb(null, path.resolve('./public/profileuploads'))
     },
     filename: function (req, file, cb) {
         return cb(null, `${Date.now()}-${file.originalname}`)
@@ -26,7 +27,7 @@ const fileFilter = function (req, file, cb) {
 
 const chatStorage = multer.diskStorage({
     destination: function (req, file, cb) {
-        return cb(null, '/chatuploads')
+        return cb(null, path.resolve('./public/chatuploads'))
     },
     filename: function (req, file, cb) {
         return cb(null, `${Date.now()}-${file.originalname}`)
@@ -47,7 +48,7 @@ const chatFilter = function (req, file, cb) {
 
 const storyStorage = multer.diskStorage({
     destination: function (req, file, cb) {
-        return cb(null, '/storyuploads');
+        return cb(null, path.resolve('./public/storyuploads'));
     },
     filename: function (req, file, cb) {
         return cb(null, `${Date.now()}-${file.originalname}`)
