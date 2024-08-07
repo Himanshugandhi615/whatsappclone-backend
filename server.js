@@ -1,5 +1,6 @@
 require('dotenv').config();
 require("./utils/db");
+const mongoose = require("mongoose");
 const express = require("express");
 const app = express();
 const port = process.env.PORT || 5000;
@@ -22,6 +23,14 @@ app.use(express.json());
 app.use(express.urlencoded({ extended: true }));
 
 app.use("/api/auth", authRoute);
+
+mongoose.connect("mongodb+srv://gandhihimanshu58:wbfS9Fvrgocyl3un@cluster0.rtzvz.mongodb.net/whatsapp?retryWrites=true&w=majority&appName=Cluster0")
+.then(()=>{
+    console.log("connection is successfull");
+}).catch((err)=>{
+    console.log(err);
+    console.log("No connection");
+});
 
 server.listen(port, () => {
     console.log(`server running at port : ${port}`)
