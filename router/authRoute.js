@@ -9,7 +9,7 @@ const multer = require('multer');
 // Storage engine setup
 const profileStorage = multer.diskStorage({
     destination: function (req, file, cb) {
-        return cb(null, '../server/public/profileuploads')
+        return cb(null, '../public/profileuploads')
     },
     filename: function (req, file, cb) {
         return cb(null, `${Date.now()}-${file.originalname}`)
@@ -26,7 +26,7 @@ const fileFilter = function (req, file, cb) {
 
 const chatStorage = multer.diskStorage({
     destination: function (req, file, cb) {
-        return cb(null, '../server/public/chatuploads')
+        return cb(null, '../public/chatuploads')
     },
     filename: function (req, file, cb) {
         return cb(null, `${Date.now()}-${file.originalname}`)
@@ -47,7 +47,7 @@ const chatFilter = function (req, file, cb) {
 
 const storyStorage = multer.diskStorage({
     destination: function (req, file, cb) {
-        return cb(null, '../server/public/storyuploads');
+        return cb(null, '../public/storyuploads');
     },
     filename: function (req, file, cb) {
         return cb(null, `${Date.now()}-${file.originalname}`)
